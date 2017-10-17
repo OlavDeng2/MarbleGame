@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  productGUID: 28050b5b0147f354bba83ad8835c0967
+  productGUID: 08d4473751a8cf741a0927836678fee8
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
@@ -586,11 +586,12 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 3a468c42-cb41-416c-a55f-793789ad79fe
-  projectName: MarbleGame
+  cloudProjectId: 79ba5312-55c0-407a-a8d3-131c1b7e8410
+  projectName: MarbleGame (1)
   organizationId: olavdeng2
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
