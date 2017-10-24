@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour {
     public float speed = 3f;
 
     public bool canMove = true;
-    
-
 
     // Use this for initialization
     void Start()

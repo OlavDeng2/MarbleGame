@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   speed: 3
-  isMainMenu: 1
+  canMove: 1
 --- !u!23 &1470145657
 MeshRenderer:
   m_ObjectHideFlags: 0
