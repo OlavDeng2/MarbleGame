@@ -60,12 +60,50 @@ public class PlayerController : MonoBehaviour {
     {
         print("object hit" + other);
 
-        DisableMovementControlls();
+        //Play the game!
+        if(other.tag == "UI" && other.name == "Play")
+        {
+            PlayGame();
+        }
+
+        //Quit the game
+        if (other.tag == "UI" && other.name == "Quit")
+        {
+            Application.Quit();
+        }
+
+        //Enter the Credits
+        if (other.tag == "UI" && other.name == "Credits")
+        {
+            EnterCredits();
+        }
+
+        //Enter the settings
+        if (other.tag == "UI" && other.name == "Settings")
+        {
+            EnterSettings();
+        }
+
     }
 
-    //Disable the movement as soon as you play the game
-    void DisableMovementControlls()
+    //Start the game
+    void PlayGame()
     {
         canMove = false;
+    }
+
+    void EnterCredits()
+    {
+        print("you are now in the credits scene");
+    }
+
+    void EnterSettings()
+    {
+        print("you are now in the settings scene");
+    }
+
+    void EnterMainMenu()
+    {
+        print("You are now in the main menu scene");
     }
 }

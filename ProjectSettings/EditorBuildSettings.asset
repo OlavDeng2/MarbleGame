@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MarbleGame/Scenes/MainGame.unity
+    guid: 58ddf2b48c5976647ac7940790eb8140
