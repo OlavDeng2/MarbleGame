@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Enter the settings
-        if (other.tag == "UI" && other.name == "Settings")
+        if (other.tag == "UI" && other.name == "Tutorial")
         {
-            EnterSettings();
+            EnterTutorial();
         }
 
     }
@@ -97,9 +97,9 @@ public class PlayerController : MonoBehaviour {
         print("you are now in the credits scene");
     }
 
-    void EnterSettings()
+    void EnterTutorial()
     {
-        print("you are now in the settings scene");
+        print("you are now in the tutorial scene");
     }
 
     void EnterMainMenu()
