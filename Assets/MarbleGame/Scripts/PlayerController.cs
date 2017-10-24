@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public int lives = 3;
     public float speed = 3f;
 
-    public bool isMainMenu = true;
+    public bool canMove = true;
     
 
 
@@ -21,12 +21,12 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        MarbleInput(isMainMenu);   
+        MarbleInput(canMove);   
 	}
 
-    void MarbleInput(bool isMenu)
+    void MarbleInput(bool move)
     {
-        if (isMenu)
+        if (move)
         {
             if (Input.GetButton("left"))
             {
@@ -56,5 +56,18 @@ public class PlayerController : MonoBehaviour {
                 gameObject.GetComponent<Rigidbody>().AddForce(Vector3.back * speed);
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print("object hit" + other);
+
+        DisableMovementControlls();
+    }
+
+    //Disable the movement as soon as you play the game
+    void DisableMovementControlls()
+    {
+        canMove = false;
     }
 }
