@@ -120,17 +120,22 @@ public class PlayerController : MonoBehaviour {
     {
         print("you are now in the credits scene");
         gameObject.transform.position = creditsSpawn.transform.position;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     void EnterTutorial()
     {
         print("you are now in the tutorial scene");
         gameObject.transform.position = tutorialSpawn.transform.position;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
     }
 
     void EnterMainMenu()
     {
         print("You are now in the main menu scene");
         gameObject.transform.position = mainMenuSpawn.transform.position;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
     }
 }
