@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController cameraControll;
+
     //Variables needed to move the camera around
-    Vector3 CameraPosition = new Vector3(0, 0, 0);
-    Vector3 PlayerPosition = new Vector3(0, 0, 0);
+    Vector3 cameraPosition = new Vector3(0, 0, 0);
+    Vector3 playerPosition = new Vector3(0, 0, 0);
 
     //variable for the distance away from the player
-    public Vector3 DistanceFromPlayer = new Vector3(0, 0, 0);
+    public Vector3 distanceFromPlayer = new Vector3(0, 0, 0);
+
+    private void Awake()
+    {
+        if (cameraControll == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            cameraControll = this;
+        }
+        else if (cameraControll != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,10 +37,10 @@ public class CameraController : MonoBehaviour
     void MoveCamera()
     {
         //get the position of the player
-        PlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
         //set the position of the camera to certain distance from the player
-        CameraPosition = PlayerPosition + DistanceFromPlayer;
-        transform.position = CameraPosition;
+        cameraPosition = playerPosition + distanceFromPlayer;
+        transform.position = cameraPosition;
     }
 }
