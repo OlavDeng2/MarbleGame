@@ -6,12 +6,16 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController cameraControll;
 
+    public bool menu = true;
+
     //Variables needed to move the camera around
     Vector3 cameraPosition = new Vector3(0, 0, 0);
     Vector3 playerPosition = new Vector3(0, 0, 0);
 
     //variable for the distance away from the player
+    public Vector3 mainMenuDistance = new Vector3(0, 0, 0);
     public Vector3 distanceFromPlayer = new Vector3(0, 0, 0);
+
 
     private void Awake()
     {
@@ -29,7 +33,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         MoveCamera();
     }
 
@@ -39,8 +42,19 @@ public class CameraController : MonoBehaviour
         //get the position of the player
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-        //set the position of the camera to certain distance from the player
-        cameraPosition = playerPosition + distanceFromPlayer;
-        transform.position = cameraPosition;
+        if (menu)
+        {
+            //set the position of the camera to certain distance from the player
+            cameraPosition = playerPosition + mainMenuDistance;
+            transform.position = cameraPosition;
+        }
+
+        else
+        {
+            //set the position of the camera to certain distance from the player
+            cameraPosition = playerPosition + distanceFromPlayer;
+            transform.position = cameraPosition;
+            transform.rotation = Quaternion.Euler(0, 270f, 0);
+        }
     }
 }

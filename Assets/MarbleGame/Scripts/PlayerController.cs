@@ -78,30 +78,35 @@ public class PlayerController : MonoBehaviour {
         if (other.tag == "UI" && other.name == "Play")
         {
             PlayGame();
+            CameraController.cameraControll.menu = false;
         }
 
         //Quit the game
         if (other.tag == "UI" && other.name == "Quit")
         {
             Application.Quit();
+
         }
 
         //Enter the Credits
         if (other.tag == "UI" && other.name == "Credits")
         {
             EnterCredits();
+            CameraController.cameraControll.menu = true;
         }
 
         //Enter the settings
         if (other.tag == "UI" && other.name == "Tutorial")
         {
             EnterTutorial();
+            CameraController.cameraControll.menu = true;
         }
 
         //Enter the MainMenu
         if (other.tag == "UI" && other.name == "MainMenuButton")
         {
             EnterMainMenu();
+            CameraController.cameraControll.menu = true;
         }
     }
 

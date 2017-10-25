@@ -1661,7 +1661,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf20c8b1bac5fb447810c4150d79a38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceFromPlayer: {x: 0, y: 10, z: 0}
+  mainMenu: 1
+  mainMenuDistance: {x: 0, y: 10, z: 0}
+  distanceFromPlayer: {x: 0, y: 2, z: 0}
 --- !u!1 &1368275348
 GameObject:
   m_ObjectHideFlags: 0
