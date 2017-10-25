@@ -10,10 +10,14 @@ public class PlayerController : MonoBehaviour {
 
     public bool canMove = true;
 
-    // Use this for initialization
-    void Start()
-    {
+    //Spawn Points for other screens
+    public GameObject mainMenuSpawn = null;
+    public GameObject creditsSpawn = null;
+    public GameObject tutorialSpawn = null;
 
+    private void Start()
+    {
+        EnterMainMenu();
     }
 
     // Update is called once per frame
@@ -22,6 +26,7 @@ public class PlayerController : MonoBehaviour {
         MarbleInput(canMove);   
 	}
 
+    //Handle the input of the marble while in the main menu
     void MarbleInput(bool move)
     {
         if (move)
@@ -59,9 +64,18 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         print("object hit" + other);
+        MenuSwitch(other);
+
+    }
+
+
+
+    //Handles the switching of "scenes" in the main menu
+    void MenuSwitch(Collider other)
+    {
 
         //Play the game!
-        if(other.tag == "UI" && other.name == "Play")
+        if (other.tag == "UI" && other.name == "Play")
         {
             PlayGame();
         }
@@ -84,9 +98,14 @@ public class PlayerController : MonoBehaviour {
             EnterTutorial();
         }
 
+        //Enter the MainMenu
+        if (other.tag == "UI" && other.name == "MainMenuButton")
+        {
+            EnterMainMenu();
+        }
     }
 
-    //Start the game
+    //Simple functions to change the position to the different "scenes"
     void PlayGame()
     {
         canMove = false;
@@ -95,15 +114,18 @@ public class PlayerController : MonoBehaviour {
     void EnterCredits()
     {
         print("you are now in the credits scene");
+        gameObject.transform.position = creditsSpawn.transform.position;
     }
 
     void EnterTutorial()
     {
         print("you are now in the tutorial scene");
+        gameObject.transform.position = tutorialSpawn.transform.position;
     }
 
     void EnterMainMenu()
     {
         print("You are now in the main menu scene");
+        gameObject.transform.position = mainMenuSpawn.transform.position;
     }
 }
