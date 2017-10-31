@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
     public GameObject creditsSpawn = null;
     public GameObject tutorialSpawn = null;
 
+    //Rigidbody
+    Rigidbody rbMarble = null;
 
     //Bool for if the timer is active
     bool timerActive = false;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour {
     {
         EnterMainMenu();
         UICanvas.SetActive(false);
-
+        rbMarble = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -132,6 +134,19 @@ public class PlayerController : MonoBehaviour {
             EnterMainMenu();
             CameraController.cameraControll.menu = true;
         }
+
+        //Finish Line
+        if (other.tag == "UI" && other.name == "FinishLine")
+        {
+            //reset the timer and canvas
+            timerActive = false;
+            timeSinceStart = 0f;
+            UICanvas.SetActive(false);
+
+            //Enter the main menu after finishing the game
+            EnterMainMenu();
+            CameraController.cameraControll.menu = true;
+        }
     }
 
     //Simple functions to change the position to the different "scenes"
@@ -140,6 +155,10 @@ public class PlayerController : MonoBehaviour {
         canMove = false;
         UICanvas.SetActive(true);
         timerActive = true;
+
+        // the bellow doesnt work with current interactable objects and how they are set up
+        //Freeze the x position of the marble so it does not go off track
+        //rbMarble.constraints = RigidbodyConstraints.FreezePositionX;
     }
 
     void EnterCredits()
@@ -162,6 +181,5 @@ public class PlayerController : MonoBehaviour {
         print("You are now in the main menu scene");
         gameObject.transform.position = mainMenuSpawn.transform.position;
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
     }
 }
