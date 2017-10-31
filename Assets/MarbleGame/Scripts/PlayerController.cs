@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -8,7 +9,11 @@ public class PlayerController : MonoBehaviour {
     public int lives = 3;
     public float speed = 3f;
 
+    //variable for user movement controll
     public bool canMove = true;
+
+    //The canvas for the UI
+    public GameObject UICanvas = null;
 
     //Spawn Points for other screens
     public GameObject mainMenuSpawn = null;
@@ -18,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     private void Start()
     {
         EnterMainMenu();
+        UICanvas.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -114,6 +121,7 @@ public class PlayerController : MonoBehaviour {
     void PlayGame()
     {
         canMove = false;
+        UICanvas.SetActive(true);
     }
 
     void EnterCredits()
