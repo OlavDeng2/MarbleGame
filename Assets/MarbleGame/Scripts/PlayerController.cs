@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
         if(timerActive)
         {
             timeSinceStart += Time.deltaTime;
-            timer.text = "time: " + Mathf.RoundToInt(timeSinceStart);
+            timer.text = "time: " + Mathf.RoundToInt(timeSinceStart) + " seconds";
         }
 
 	}

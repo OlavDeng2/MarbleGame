@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class JumpBoardController : MonoBehaviour
 {
-    public Vector3 force = new Vector3(0,0,0);
+    public Vector3 force = new Vector3(0, 5000 ,0);
 
     private void OnMouseDown()
     {
         //Do stuff
-        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 5000, 0));
+        gameObject.GetComponent<Rigidbody>().AddForce(force);
+
         print("Game Object clicked");
+
+        
+        
     }
 }
