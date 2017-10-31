@@ -20,6 +20,15 @@ public class PlayerController : MonoBehaviour {
     public GameObject creditsSpawn = null;
     public GameObject tutorialSpawn = null;
 
+
+    //Bool for if the timer is active
+    bool timerActive = false;
+    //time spent from start of track
+    float timeSinceStart = 0f;
+
+    //Text for the times
+    public Text timer = null;
+
     private void Start()
     {
         EnterMainMenu();
@@ -30,7 +39,15 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        MarbleInput(canMove);   
+        MarbleInput(canMove);
+
+        //Timer to keep track of time spent on the track
+        if(timerActive)
+        {
+            timeSinceStart += Time.deltaTime;
+            timer.text = "time: " + Mathf.RoundToInt(timeSinceStart);
+        }
+
 	}
 
     //Handle the input of the marble while in the main menu
@@ -122,6 +139,7 @@ public class PlayerController : MonoBehaviour {
     {
         canMove = false;
         UICanvas.SetActive(true);
+        timerActive = true;
     }
 
     void EnterCredits()
