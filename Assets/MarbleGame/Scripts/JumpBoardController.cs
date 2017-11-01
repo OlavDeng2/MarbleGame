@@ -8,12 +8,9 @@ public class JumpBoardController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Do stuff
+        //TODO Make the trapdoor actually functional
         gameObject.GetComponent<Rigidbody>().AddForce(force);
 
         print("Game Object clicked");
-
-        
-        
     }
 }
