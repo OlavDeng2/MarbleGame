@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject tutorialSpawn = null;
 
     //Rigidbody
-    Rigidbody rbMarble = null;
+    //Rigidbody rbMarble = null;
 
     //Bool for if the timer is active
     bool timerActive = false;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
     {
         EnterMainMenu();
         UICanvas.SetActive(false);
-        rbMarble = gameObject.GetComponent<Rigidbody>();
+       // rbMarble = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
