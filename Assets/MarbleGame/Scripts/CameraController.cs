@@ -46,6 +46,7 @@ public class CameraController : MonoBehaviour
         {
             //set the position of the camera to certain distance from the player
             cameraPosition = playerPosition + mainMenuDistance;
+            transform.rotation = Quaternion.Euler(90, 0, 0);
             transform.position = cameraPosition;
         }
 
