@@ -6,7 +6,21 @@ public class LightSwitchController : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        //TODO Make the light switch actually functional
-        print("Game Object clicked");
+        ToggleLight();
     }
+
+
+    //Turn on and off the light
+    void ToggleLight()
+    {
+        if (gameObject.GetComponent<Light>().intensity == 0)
+        {
+            gameObject.GetComponent<Light>().intensity = 1;
+        }
+        else if (gameObject.GetComponent<Light>().intensity == 1)
+        {
+            gameObject.GetComponent<Light>().intensity = 0;
+        }
+    }
+
 }

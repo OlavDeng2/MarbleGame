@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour {
             //Enter the main menu after finishing the game
             EnterMainMenu();
             CameraController.cameraControll.menu = true;
+            canMove = true;
         }
     }
 
