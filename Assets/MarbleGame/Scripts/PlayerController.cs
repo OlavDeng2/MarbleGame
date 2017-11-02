@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject tutorialSpawn = null;
 
     //Rigidbody
-    //Rigidbody rbMarble = null;
+    Rigidbody rbMarble = null;
 
     //Bool for if the timer is active
     bool timerActive = false;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour {
     {
         EnterMainMenu();
         UICanvas.SetActive(false);
-       // rbMarble = gameObject.GetComponent<Rigidbody>();
+        rbMarble = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -157,9 +157,8 @@ public class PlayerController : MonoBehaviour {
         UICanvas.SetActive(true);
         timerActive = true;
 
-        // the bellow doesnt work with current interactable objects and how they are set up
         //Freeze the x position of the marble so it does not go off track
-        //rbMarble.constraints = RigidbodyConstraints.FreezePositionX;
+        rbMarble.constraints = RigidbodyConstraints.FreezePositionX;
     }
 
     void EnterCredits()
