@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+
+        //make sure there is only 1 camera(and camera controller)
         if (cameraControll == null)
         {
             DontDestroyOnLoad(gameObject);

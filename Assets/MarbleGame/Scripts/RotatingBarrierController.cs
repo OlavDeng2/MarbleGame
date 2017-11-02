@@ -12,6 +12,7 @@ public class RotatingBarrierController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        //if the object can rotate, rotate the object
         if(canRotate)
         {
             gameObject.GetComponent<Transform>().Rotate(rotation);
@@ -20,11 +21,8 @@ public class RotatingBarrierController : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        //Start rotating if it isnt allready rotating, if it is rotating, stop rotating
+        //set the boolean for whether the object can rotate or if it cant
         if(!canRotate){canRotate = true;}
         else if(canRotate) { canRotate = false; }
-
-
-        print("Game Object clicked");
     }
 }

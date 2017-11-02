@@ -32,14 +32,20 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
+        //get the marble rigid body
         marbleRB = gameObject.GetComponent<Rigidbody>();
+
+        //make sure to start in the main menu and all variables are set correctly
         EnterMainMenu();
+
+        //Canvas is not needed in the main menu
         UICanvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if the marble can move, handle the input
         MarbleInput(canMove);
 
         //Timer to keep track of time spent on the track
@@ -88,9 +94,8 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        print("object hit" + other);
+        //Handle the Main Menu Interaction
         MenuSwitch(other);
-
     }
 
 
@@ -170,6 +175,8 @@ public class PlayerController : MonoBehaviour {
 
     public void EnterMainMenu()
     {
+        //reset everything
+        timeSinceStart = 0f;
         print("You are now in the main menu scene");
         canMove = true;
         timerActive = false;
@@ -177,6 +184,7 @@ public class PlayerController : MonoBehaviour {
         CameraController.cameraControll.menu = true;
         marbleRB.constraints = RigidbodyConstraints.None;
 
+        //set the marbles position to the main menu spawn
         gameObject.transform.position = mainMenuSpawn.transform.position;
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }

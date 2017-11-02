@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TrapdoorController : MonoBehaviour {
 
+    //force that is supplied to the trapdoor when opened
     public Vector3 force = new Vector3(0, 5000, 0);
 
-    Rigidbody trapdoorRB;
+    //variable to hold the rigidbody of the trap door
+    Rigidbody trapdoorRB = null;
 
     private void Start()
     {
@@ -22,7 +24,5 @@ public class TrapdoorController : MonoBehaviour {
         //Open the trapdoor!
         trapdoorRB.isKinematic = false;
         trapdoorRB.useGravity = true;
-
-        print("Game Object clicked");
     }
 }
