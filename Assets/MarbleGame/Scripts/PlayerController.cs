@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     //Initialize some variables
-    public int lives = 3;
     public float speed = 3f;
 
     //variable for user movement controll
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject tutorialSpawn = null;
 
     //Rigidbody
-    Rigidbody rbMarble = null;
+    Rigidbody marbleRB = null;
 
     //Bool for if the timer is active
     bool timerActive = false;
@@ -33,9 +32,9 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
+        marbleRB = gameObject.GetComponent<Rigidbody>();
         EnterMainMenu();
         UICanvas.SetActive(false);
-        rbMarble = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -138,15 +137,8 @@ public class PlayerController : MonoBehaviour {
         //Finish Line
         if (other.tag == "UI" && other.name == "FinishLine")
         {
-            //reset the timer and canvas
-            timerActive = false;
-            timeSinceStart = 0f;
-            UICanvas.SetActive(false);
-
             //Enter the main menu after finishing the game
             EnterMainMenu();
-            CameraController.cameraControll.menu = true;
-            canMove = true;
         }
     }
 
@@ -158,7 +150,7 @@ public class PlayerController : MonoBehaviour {
         timerActive = true;
 
         //Freeze the x position of the marble so it does not go off track
-        rbMarble.constraints = RigidbodyConstraints.FreezePositionX;
+        marbleRB.constraints = RigidbodyConstraints.FreezePositionX;
     }
 
     void EnterCredits()
@@ -176,9 +168,15 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void EnterMainMenu()
+    public void EnterMainMenu()
     {
         print("You are now in the main menu scene");
+        canMove = true;
+        timerActive = false;
+        UICanvas.SetActive(false);
+        CameraController.cameraControll.menu = true;
+        marbleRB.constraints = RigidbodyConstraints.None;
+
         gameObject.transform.position = mainMenuSpawn.transform.position;
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
